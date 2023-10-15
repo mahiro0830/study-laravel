@@ -14,4 +14,9 @@ class HelloController extends Controller
 
         return view('hello.index', $data);
     }
+
+    public function other() :object
+    {
+        return redirect()->route('hello');
+    }
 }
