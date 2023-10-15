@@ -3,21 +3,25 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use LDAP\Result;
 
 class HelloController extends Controller
 {
-    public function index($id) :object
+    public function index( $id, Request $request ) : object
     {
         $data = [
-            'msg' => 'this is sample message',
-            'id'  => $id,
+            'msg' => $request->hello,
         ];
 
         return view('hello.index', $data);
     }
 
-    public function other() :object
+    public function other( Request $request ) : object
     {
-        return redirect()->route('hello');
+        $data = [
+            'msg' => $request->bye,
+        ];
+
+        return view('hello.index', $data);
     }
 }
