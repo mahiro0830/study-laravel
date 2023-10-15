@@ -7,7 +7,7 @@ use Illuminate\Http\Request;
 
 class HelloController extends Controller
 {
-    public function index( Person $person ) : object
+    public function index( $person ) : object
     {
         $data = [
             'msg' => $person,
