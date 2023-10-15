@@ -19,4 +19,5 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get( '/hello/{person}', [HelloController::class, 'index'] );
+Route::get( '/hello', [HelloController::class, 'index'] )->name( 'hello' );
+Route::get( '/hello/{msg}', [HelloController::class, 'other'] );
