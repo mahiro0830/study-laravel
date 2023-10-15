@@ -9,5 +9,6 @@
 <body>
   <h1>Hello/Index</h1>
   <p>{{ $msg }}</p>
+  <p>id={{ $id }}</p>
 </body>
 </html>
