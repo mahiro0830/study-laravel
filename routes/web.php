@@ -19,7 +19,4 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::middleware([HelloMiddleware::class])->group(function () {
-    Route::get( '/hello/{id}', [HelloController::class, 'index'])->where('id', '[0-9]+' );
-    Route::get( '/hello/other', [HelloController::class, 'other'] );
-});
+Route::get( '/hello/{person}', [HelloController::class, 'index'] );
