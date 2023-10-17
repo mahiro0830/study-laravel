@@ -8,7 +8,9 @@
 </head>
 <body>
   <h1>Hello/Index</h1>
-  <p>{!!$msg!!}</p>
+  <p>ファイルパス　：{!!$msg!!}</p>
+  <p>ファイルサイズ：{!!$size!!}</p>
+  <p>最終更新日　　：{!!$lastModified!!}</p>
   <ul>
   @foreach ($data as $item)
   <li>{!!$item!!}</li>
