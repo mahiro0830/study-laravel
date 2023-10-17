@@ -17,14 +17,14 @@ class HelloController extends Controller
 
     public function index() : object
     {
-        $sample_msg  = Storage::disk( 'public' )->url( 'hello.txt' );
-        $sample_data = Storage::disk( 'public' )->get( $this->filename );
-        $sample_size = Storage::disk( 'public' )->size( $this->filename );
+        $sample_msg          = Storage::disk( 'public' )->url( 'hello.txt' );
+        $sample_data         = Storage::disk( 'public' )->get( $this->filename );
+        $sample_size         = Storage::disk( 'public' )->size( $this->filename );
         $sample_lastModified = Storage::disk( 'public' )->lastModified( $this->filename );
         $data = [
-            'msg'  => $sample_msg,
-            'data' => explode( PHP_EOL, $sample_data ),
-            'size' => $sample_size,
+            'msg'          => $sample_msg,
+            'data'         => explode( PHP_EOL, $sample_data ),
+            'size'         => $sample_size,
             'lastModified' => date( 'Y.m.d', $sample_lastModified ),
         ];
 

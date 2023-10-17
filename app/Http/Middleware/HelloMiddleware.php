@@ -13,7 +13,7 @@ class HelloMiddleware
      *
      * @param  \Closure(\Illuminate\Http\Request): (\Symfony\Component\HttpFoundation\Response)  $next
      */
-    public function handle(Request $request, Closure $next): Response
+    public function handle( Request $request, Closure $next ): Response
     {
         $hello = 'Hello! This is Middleware';
         $bye   = 'Good bye, Middleware...';
@@ -21,7 +21,7 @@ class HelloMiddleware
             'hello' => $hello,
             'bye'   => $bye,
         ];
-        $request->merge($data);
-        return $next($request);
+        $request->merge( $data );
+        return $next( $request );
     }
 }
