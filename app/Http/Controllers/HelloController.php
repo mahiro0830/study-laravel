@@ -12,13 +12,13 @@ class HelloController extends Controller
 
     public function __construct()
     {
-        $this->filename = 'sample.txt';
+        $this->filename = 'hello.txt';
     }
 
     public function index() : object
     {
-        $sample_msg  = $this->filename;
-        $sample_data = Storage::get( $this->filename );
+        $sample_msg  = Storage::disk( 'public' )->url( 'hello.txt' );
+        $sample_data = Storage::disk( 'public' )->get( $this->filename );
         $data = [
             'msg'  => $sample_msg,
             'data' => explode( PHP_EOL, $sample_data ),
@@ -29,7 +29,7 @@ class HelloController extends Controller
 
     public function other( $msg ) : object
     {
-        Storage::append( $this->filename, $msg );
+        Storage::disk( 'public' )->append( $this->filename, $msg );
         return redirect()->route( 'hello' );
     }
 }
