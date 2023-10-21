@@ -33,9 +33,14 @@ class HelloController extends Controller
 
     public function other( $msg ) : object
     {
-        Storage::disk( 'public' )->delete( 'bk_' . $this->filename );
+        if ( Storage::disk( 'public' )->exists( 'bk_' . $this->filename ) ) {
+            Storage::disk( 'public' )->delete( 'bk_' . $this->filename );
+        }
         Storage::disk( 'public' )->copy( $this->filename, 'bk_' . $this->filename );
-        Storage::disk( 'local' )->delete( 'bk_' . $this->filename );
+        
+        if ( Storage::disk( 'local' )->exists( 'bk_' . $this->filename ) ) {
+            Storage::disk( 'local' )->delete( 'bk_' . $this->filename );
+        }
         Storage::disk( 'local' )->move( 'public/bk_' . $this->filename, 'bk_' . $this->filename );
 
         return redirect()->route( 'hello' );
