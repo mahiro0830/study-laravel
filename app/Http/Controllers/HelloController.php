@@ -33,7 +33,8 @@ class HelloController extends Controller
 
     public function other( Request $request )
     {
-        Storage::disk( 'public' )->putFile( 'files', $request->file );
+        $ext = '.' . $request->file->extension(); // 拡張子を取得
+        Storage::disk( 'public' )->putFileAs( 'files', $request->file, 'upload' . $ext );
         return redirect()->route( 'hello' );
     }
 }
