@@ -15,23 +15,18 @@ class HelloController extends Controller
         $this->filename = 'hello.txt';
     }
 
-    public function index() : object
+    public function index( Request $request ) : object
     {
-        $dir = '/';
-        $all = Storage::disk( 'logs' )->allFiles( $dir );
+        $msg = 'please input text:';
+
+        if ( $request->isMethod( 'post' ) ) {
+            $msg = 'you typed: "' . $request->input( 'msg' ) . '"';
+        }
 
         $data = [
-            'msg'  => 'DIR: ' . $dir,
-            'data' => $all,
+            'msg'  => $msg,
         ];
 
         return view( 'hello.index', $data );
-    }
-
-    public function other( Request $request )
-    {
-        $ext = '.' . $request->file->extension(); // 拡張子を取得
-        Storage::disk( 'public' )->putFileAs( 'files', $request->file, 'upload' . $ext );
-        return redirect()->route( 'hello' );
     }
 }
