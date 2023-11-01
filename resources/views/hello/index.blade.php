@@ -8,18 +8,11 @@
 </head>
 <body>
   <h1>Hello/Index</h1>
-  <p>ファイルパス　：{!! $msg !!}</p>
-  <p>ファイルサイズ：{!! $size !!}</p>
-  <p>最終更新日　　：{!! $lastModified !!}</p>
+  <p>{!! $msg !!}</p>
   <ul>
   @foreach ( $data as $item )
   <li>{!! $item !!}</li>
   @endforeach
   </ul>
-  <form action="/hello/other" method="post" enctype="multipart/form-data">
-    @csrf
-    <input type="file" name="file">
-    <input type="submit">
-  </form>
 </body>
 </html>
