@@ -22,8 +22,13 @@ class HelloController extends Controller
         $keys   = [];
         $values = [];
 
+        $onlyKeys = array(
+            'name',
+            'mail',
+        );
+
         if ( $request->isMethod( 'post' ) ) {
-            $form   = $request->all();
+            $form   = $request->only( $onlyKeys );
             $keys   = array_keys( $form );
             $values = array_values( $form );
 
