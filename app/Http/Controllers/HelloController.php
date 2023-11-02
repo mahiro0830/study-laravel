@@ -27,7 +27,7 @@ class HelloController extends Controller
             'mail',
         );
 
-        if ( $request->isMethod( 'post' ) ) {
+        if ( $request->isMethod( 'get' ) ) {
             $form   = $request->only( $onlyKeys );
             $keys   = array_keys( $form );
             $values = array_values( $form );
@@ -42,6 +42,8 @@ class HelloController extends Controller
             $response->setContent( $result );
 
             $request->flash();
+
+            var_dump( $request->query() );
         }
 
         $data = [
