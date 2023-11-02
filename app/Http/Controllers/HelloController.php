@@ -39,9 +39,9 @@ class HelloController extends Controller
             }
 
             $result .= '</body></html>';
-
             $response->setContent( $result );
-            return $response;
+
+            $request->flash();
         }
 
         $data = [
