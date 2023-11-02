@@ -42,8 +42,6 @@ class HelloController extends Controller
             $response->setContent( $result );
 
             $request->flash();
-
-            var_dump( $request->query() );
         }
 
         $data = [
@@ -53,5 +51,26 @@ class HelloController extends Controller
         ];
 
         return view( 'hello.index', $data );
+    }
+
+    /**
+     * other
+     * 
+     * @param
+     * @param
+     * @return 
+     */
+    public function other ( Request $request ) : object
+    {
+        $data = [
+            'mame' => 'name',
+            'mail' => 'mail@gmail.com',
+            'tel'  => '000-0000-0000',
+        ];
+
+        $query_str = http_build_query( $data );
+        $data[ 'msg' ] = $query_str;
+
+        return redirect()->route( 'hello', [ 'name' => 'Taro' ] );
     }
 }
