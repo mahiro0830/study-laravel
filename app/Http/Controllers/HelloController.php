@@ -9,20 +9,13 @@ use Illuminate\Support\Facades\Storage;
 
 class HelloController extends Controller
 {
-    private $filename;
-
-    public function __construct()
+    public function index( int $id ) : object
     {
-        $this->filename = 'hello.txt';
-    }
-
-    public function index() : object
-    {
-        $myService = app( 'App\MyClasses\MyService' );
+        $myService = app()->makeWith( 'App\MyClasses\MyService', [ 'id' => $id ] );
 
         $data = [
             'msg'  => $myService->say(),
-            'data' => $myService->data(),
+            'data' => $myService->allData(),
         ];
 
         return view( 'hello.index', $data );

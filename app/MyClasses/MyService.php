@@ -3,13 +3,16 @@ namespace App\MyClasses;
 
 class MyService
 {
-    private $msg;
-    private $data;
+    private $id   = -1;
+    private $msg  = 'Hello! This is MyService';
+    private $data = [ 'Hello', 'Welcome', 'Bye' ];
 
-    public function __construct()
+    public function __construct( int $id = -1 )
     {
-        $this->msg  = 'Hello! This is MyService';
-        $this->data = [ 'Hello', 'Welcome', 'Bye' ];
+        if ( $id >= 0 ) {
+            $this->id  = $id;
+            $this->msg = 'select: ' . $this->data[ $id ];
+        }
     }
 
     public function say()
@@ -17,7 +20,12 @@ class MyService
         return $this->msg;
     }
 
-    public function data()
+    public function data( int $id )
+    {
+        return $this->data[ $id ];
+    }
+
+    public function allData()
     {
         return $this->data;
     }
