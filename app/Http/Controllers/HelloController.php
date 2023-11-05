@@ -10,6 +10,11 @@ use Illuminate\Support\Facades\Storage;
 
 class HelloController extends Controller
 {
+    public function __construct( MyService $myService )
+    {
+        $myService = app( 'App\MyClasses\MyService' );
+    }
+
     public function index( MyService $myService, int $id ) : object
     {
         $myService->setId( $id );
@@ -17,8 +22,6 @@ class HelloController extends Controller
             'msg'  => $myService->say(),
             'data' => $myService->allData(),
         ];
-
-        var_dump( $myService->id );
 
         return view( 'hello.index', $data );
     }

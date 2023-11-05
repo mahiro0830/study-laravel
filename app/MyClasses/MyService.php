@@ -3,12 +3,15 @@ namespace App\MyClasses;
 
 class MyService
 {
-    public $id    = -1;
-    private $msg  = 'Hello! This is MyService';
-    private $data = [ 'Hello', 'Welcome', 'Bye' ];
+    private $serial;
+    public  $id     = -1;
+    private $msg    = 'Hello! This is MyService';
+    private $data   = [ 'Hello', 'Welcome', 'Bye' ];
 
     public function __construct()
     {
+        $this->serial = rand();
+        echo '[' . $this->serial . ']';
     }
 
     public function setId( int $id )

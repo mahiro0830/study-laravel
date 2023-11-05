@@ -20,7 +20,7 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot(): void
     {
-        app()->bind( 'App\MyClasses\MyService', function () {
+        app()->singleton( 'App\MyClasses\MyService', function () {
             $myService = new MyService;
             $myService->setId( 0 );
 
