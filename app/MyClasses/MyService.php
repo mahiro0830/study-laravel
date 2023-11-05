@@ -3,13 +3,17 @@ namespace App\MyClasses;
 
 class MyService
 {
-    private $id   = -1;
+    public $id    = -1;
     private $msg  = 'Hello! This is MyService';
     private $data = [ 'Hello', 'Welcome', 'Bye' ];
 
-    public function __construct( int $id = -1 )
+    public function __construct()
     {
-        if ( $id >= 0 ) {
+    }
+
+    public function setId( int $id )
+    {
+        if ( $id >= 0 && $id < count( $this->data ) ) {
             $this->id  = $id;
             $this->msg = 'select: ' . $this->data[ $id ];
         }
